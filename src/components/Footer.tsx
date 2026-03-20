@@ -16,8 +16,8 @@ export default function Footer() {
           <div className="col-span-1 md:col-span-2">
             <a href="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="inline-block mb-6">
               <img
-                src="https://neas-hvac.com/wp-content/uploads/2018/11/NEAS-LOGO.png"
-                alt="New England Air Systems LLC"
+                src="https://superiorcomfort.com/wp-content/uploads/2023/05/SuperiorComfort-removebg-preview.png"
+                alt="Superior Comfort Heating & Air Conditioning LLC"
                 className="h-16 object-contain brightness-0 invert"
                 loading="lazy"
                 decoding="async"

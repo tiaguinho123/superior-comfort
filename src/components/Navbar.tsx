@@ -47,7 +47,7 @@ export default function Navbar() {
           <Link to="/" className="flex-shrink-0" aria-label="New England Air Systems — Home" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
             <img
               src={SC_LOGO_URL}
-              alt="New England Air Systems, LLC — Heating & Air Conditioning"
+              alt="Superior Comfort Heating & Air Conditioning LLC � Logo"
               className="h-16 w-auto object-contain"
               fetchPriority="high"
             />

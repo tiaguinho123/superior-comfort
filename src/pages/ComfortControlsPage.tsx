@@ -6,15 +6,15 @@ export default function ComfortControlsPage() {
     <ServicePage
       title="Comfort Controls"
       subtitle="Smart Thermostats · Automation · Energy Management"
-      heroImage="https://neas-hvac.com/wp-content/uploads/2019/01/COMFORT-CONTROLS-LARGE.jpg"
-      heroImageAlt="NEAS Comfort Controls — smart thermostat installation in Danbury CT"
+      heroImage="https://Superior Comfort-hvac.com/wp-content/uploads/2019/01/COMFORT-CONTROLS-LARGE.jpg"
+      heroImageAlt="Superior Comfort Comfort Controls — smart thermostat installation in Ansonia CT"
       content={
         <div>
           <h2 className="text-3xl font-bold text-slate-900 mb-6">Comfort Controls</h2>
           <div className="w-12 h-1 rounded-full mb-8" style={{ backgroundColor: '#CE1126' }} />
 
           <img
-            src="https://neas-hvac.com/wp-content/uploads/2019/01/iComfort-S30-Lifestyle-4-1024x565-1024x565.jpg"
+            src="https://Superior Comfort-hvac.com/wp-content/uploads/2019/01/iComfort-S30-Lifestyle-4-1024x565-1024x565.jpg"
             alt="iComfort S30 smart thermostat"
             className="w-full rounded-2xl mb-8 object-cover"
             style={{ maxHeight: '360px' }}
@@ -26,7 +26,7 @@ export default function ComfortControlsPage() {
             Upgrading your existing thermostat to a smart control system allows complete management of your HVAC system, conserves energy, and truly optimizes your home comfort. Comfort is influenced by humidity, air circulation, and temperature — and the right control system manages all three automatically.
           </p>
           <p className="text-slate-600 text-lg leading-relaxed mb-8">
-            New England Air Systems installs and services leading brands including the iComfort S30 and other smart home control systems compatible with all major platforms.
+            Superior Comfort installs and services leading brands including the iComfort S30 and other smart home control systems compatible with all major platforms.
           </p>
 
           <h3 className="text-xl font-bold text-slate-900 mb-4">Our Comfort Control Services:</h3>

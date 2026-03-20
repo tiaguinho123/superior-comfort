@@ -11,8 +11,8 @@ export default function FinancingPage() {
       {/* Banner */}
       <div className="relative h-64 md:h-80 overflow-hidden">
         <img
-          src="https://neas-hvac.com/wp-content/uploads/2019/07/financing-image5.jpg"
-          alt="NEAS Financing — Synchrony Financial"
+          src="https://Superior Comfort-hvac.com/wp-content/uploads/2019/07/financing-image5.jpg"
+          alt="Superior Comfort Financing — Synchrony Financial"
           className="w-full h-full object-cover"
           fetchPriority="high"
           decoding="async"
@@ -45,7 +45,7 @@ export default function FinancingPage() {
             <h2 className="text-3xl font-bold text-slate-900 mb-4">Flexible Financing Available</h2>
             <div className="w-12 h-1 rounded-full mx-auto mb-6" style={{ backgroundColor: '#CE1126' }} />
             <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
-              New England Air Systems understands the need for financial assistance when upgrading and improving your property and quality of living.
+              Superior Comfort understands the need for financial assistance when upgrading and improving your property and quality of living.
             </p>
           </div>
 
@@ -75,8 +75,8 @@ export default function FinancingPage() {
             <div className="space-y-6">
               <div className="bg-slate-50 rounded-2xl p-8 border border-slate-100 text-center">
                 <img
-                  src="https://neas-hvac.com/wp-content/uploads/2019/07/financing-image5.jpg"
-                  alt="Synchrony Financial — NEAS Financing"
+                  src="https://Superior Comfort-hvac.com/wp-content/uploads/2019/07/financing-image5.jpg"
+                  alt="Synchrony Financial — Superior Comfort Financing"
                   className="w-full rounded-xl mb-6 object-cover"
                   style={{ maxHeight: '200px' }}
                   loading="lazy"

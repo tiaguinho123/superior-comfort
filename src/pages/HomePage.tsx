@@ -5,74 +5,75 @@ import { useSiteConfig } from '../config/SiteConfigContext';
 import TrustBadges from '../components/TrustBadges';
 import GoogleReviews from '../components/GoogleReviews';
 
-// Real NEAS images scraped from neas-hvac.com
-// Hero: the ACTUAL building & van photo shown on their homepage
-const NEAS_HERO_IMAGE =
-  'https://neas-hvac.com/wp-content/uploads/2018/11/462833_280179332059834_678440108_o.jpg';
+// Superior Comfort real images (all verified 200 OK from superiorcomfort.com)
+const SC_HERO_IMAGE =
+  'https://superiorcomfort.com/wp-content/uploads/2023/04/close-up-heat-pump-outside-home.jpg';
 
+// Service card images (all verified 200 OK)
 const services = [
   {
-    title: 'Heating',
-    img: 'https://neas-hvac.com/wp-content/uploads/2019/01/HEATING.jpg',
+    title: 'Residential HVAC',
+    img: 'https://superiorcomfort.com/wp-content/uploads/2023/04/service-man-adjusting-house-heating-system-683x1024.jpg',
     path: '/heating',
-    desc: 'Service and installation of oil and gas fired furnaces, heat pump systems, and boilers.',
+    desc: 'Complete heating and cooling services for homeowners in New Haven and Fairfield County.',
   },
   {
-    title: 'Cooling',
-    img: 'https://neas-hvac.com/wp-content/uploads/2019/01/Cooling.jpg',
+    title: 'Commercial HVAC',
+    img: 'https://superiorcomfort.com/wp-content/uploads/2023/04/men-working-with-equipment-full-shot.jpg',
     path: '/cooling',
-    desc: 'Precise temperature control, ideal humidity levels, and peak efficiency year-round.',
+    desc: 'Custom commercial HVAC planning and installation for spaces from 1,200 to 12,000 sq ft.',
   },
   {
     title: 'Indoor Air Quality',
-    img: 'https://neas-hvac.com/wp-content/uploads/2019/01/180404-better-stock-woman-blowing-nose-ew-1250p_099d7e00064bb4e46bb983b8ce7e3f24.fit-760w.jpg',
+    img: 'https://superiorcomfort.com/wp-content/uploads/2023/04/close-up-ventilation-system-683x1024.jpg',
     path: '/indoor-air-quality',
-    desc: 'Air purification, filtration, and humidity-control systems for a healthier home.',
+    desc: 'Air filtration, dehumidification, and whole-home IAQ solutions for healthier air.',
   },
   {
-    title: 'Comfort Controls',
-    img: 'https://neas-hvac.com/wp-content/uploads/2019/01/iComfort-S30-Lifestyle-4-1024x565-1024x565.jpg',
+    title: 'System Maintenance',
+    img: 'https://superiorcomfort.com/wp-content/uploads/2023/04/residential-units-narrow.jpg',
     path: '/comfort-controls',
-    desc: 'Smart thermostats and automation for complete HVAC management.',
+    desc: '18-point annual tune-up plans to extend system life and prevent unexpected breakdowns.',
   },
 ];
 
 export default function HomePage() {
-  const { phone, phoneFormatted, reviews } = useSiteConfig();
+  const { phone, phoneFormatted, reviews, colors } = useSiteConfig();
 
   return (
     <div>
       {/* ─── Financing Announcement Strip ──────────────────── */}
-      {/* Between Navbar (h-20=80px) and Hero */}
       <div
         className="fixed top-20 left-0 right-0 z-40 flex items-center justify-center gap-3 px-4 py-2.5 text-white text-sm font-semibold"
-        style={{ backgroundColor: '#003DA5' }}
+        style={{ backgroundColor: colors.dark }}
         role="banner"
         aria-label="Financing announcement"
       >
         <AlertCircle className="w-4 h-4 flex-shrink-0" aria-hidden="true" />
         <span>
-          Financing Available Through{' '}
+          Free Project Estimates — No Obligation.{' '}
           <strong className="underline-offset-2 underline decoration-white/60">
-            Synchrony Financial
-          </strong>{' '}
-          — Ask Us Today!
+            Call Us Today!
+          </strong>
         </span>
       </div>
 
       {/* ─── Hero ──────────────────────────────────────────── */}
-      {/* pt-20 (navbar) + ~40px (financing strip) = pt-28 */}
       <section className="relative pt-28" aria-label="Hero">
         <div className="relative overflow-hidden" style={{ height: '540px' }}>
-          {/* Real NEAS building & vans photo */}
+          {/* Real Superior Comfort heat pump photo */}
           <img
-            src={NEAS_HERO_IMAGE}
-            alt="New England Air Systems — building and work vans in Danbury, CT"
+            src={SC_HERO_IMAGE}
+            alt="Superior Comfort Heating & Air Conditioning — HVAC service in Ansonia, CT"
             className="w-full h-full object-cover object-center"
             fetchPriority="high"
             decoding="async"
+            onError={(e) => {
+              (e.target as HTMLImageElement).src =
+                'https://superiorcomfort.com/wp-content/uploads/2023/04/repairman-doing-air-conditioner-service-e1680322323522.jpg';
+            }}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/72 via-black/45 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/50 to-transparent" />
 
           {/* Hero content */}
           <div className="absolute inset-0 flex items-center">
@@ -103,15 +104,15 @@ export default function HomePage() {
                 </a>
 
                 <h1 className="text-4xl md:text-5xl font-extrabold text-white leading-tight mb-4">
-                  NEW ENGLAND AIR SYSTEMS
+                  Superior Comfort
                   <br />
-                  <span style={{ color: '#CE1126' }}>Heating & Air Conditioning</span>
+                  <span style={{ color: colors.primaryHex }}>Heating & Air Conditioning</span>
                 </h1>
                 <p className="text-xl text-white/90 mb-3 font-medium">
-                  Family-Owned • Danbury, CT
+                  Family-Owned • Ansonia, CT • Since 1996
                 </p>
                 <p className="text-base text-white/75 mb-8">
-                  Serving local homeowners for more than 20 years.
+                  Serving New Haven & Fairfield County for 30+ years.
                   <br />
                   Sales • Service • Installation — 24 Hour Emergency Service
                 </p>
@@ -120,19 +121,18 @@ export default function HomePage() {
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link
                     to="/contact-us"
-                    className="inline-flex items-center justify-center gap-2 px-8 py-4 text-white font-bold rounded-lg text-lg transition-colors shadow-lg"
-                    style={{ backgroundColor: '#CE1126' }}
+                    className="inline-flex items-center justify-center gap-2 px-8 py-4 text-white font-bold rounded-lg text-lg transition-colors shadow-lg whitespace-nowrap"
+                    style={{ backgroundColor: colors.primaryHex }}
                   >
                     <Calendar className="w-5 h-5" aria-hidden="true" />
-                    Get a Free Estimate
+                    Get A Free Quote
                   </Link>
 
-                  {/* Changed from phone number to Emergency Call 24/7 */}
                   <a
                     href={`tel:${phone}`}
-                    className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-slate-900 font-bold rounded-lg text-lg transition-colors hover:bg-amber-50 shadow-lg border-2 border-amber-400"
+                    className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-slate-900 font-bold rounded-lg text-lg transition-colors hover:bg-amber-50 shadow-lg border-2 border-amber-400 whitespace-nowrap"
                   >
-                    <Phone className="w-5 h-5 text-red-600" aria-hidden="true" />
+                    <Phone className="w-5 h-5 text-green-600" aria-hidden="true" />
                     Emergency Call 24/7
                   </a>
                 </div>
@@ -148,21 +148,22 @@ export default function HomePage() {
       {/* ─── About Blurb ─── */}
       <section className="py-16 bg-white border-b border-slate-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-xs font-bold tracking-widest uppercase mb-3" style={{ color: '#CE1126' }}>
+          <p className="text-xs font-bold tracking-widest uppercase mb-3" style={{ color: colors.primaryHex }}>
             About Us
           </p>
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-5">NEW ENGLAND AIR SYSTEMS</h2>
+          <h2 className="text-3xl font-extrabold text-slate-900 mb-5">
+            Superior Comfort Heating & Air Conditioning LLC
+          </h2>
           <p className="text-lg text-slate-600 mb-4 leading-relaxed">
-            NEW ENGLAND AIR SYSTEMS is a family owned heating &amp; air conditioning company
-            located in Danbury, CT.
+            Superior Comfort is a full-service HVAC company based in Ansonia, CT, committed to excellence in design and customer satisfaction since 1996.
           </p>
           <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-            We have been servicing local homeowners for more than 20 years.
+            Serving residential and commercial clients throughout New Haven and Fairfield County with expert heating, cooling, and indoor air quality solutions.
           </p>
           <img
-            src="https://neas-hvac.com/wp-content/uploads/2021/01/Award_2021_transparent-1.png"
-            alt="Expertise.com Best HVAC Professionals in Danbury 2021"
-            className="mx-auto h-28 object-contain"
+            src="https://superiorcomfort.com/wp-content/uploads/2023/04/repairman-doing-air-conditioner-service-e1680322323522.jpg"
+            alt="Superior Comfort HVAC technician performing professional air conditioning service"
+            className="mx-auto h-40 w-full max-w-md object-cover rounded-xl shadow"
             loading="lazy"
             decoding="async"
           />
@@ -178,7 +179,7 @@ export default function HomePage() {
             </h2>
             <div
               className="w-16 h-1 mx-auto rounded-full"
-              style={{ backgroundColor: '#CE1126' }}
+              style={{ backgroundColor: colors.primaryHex }}
               aria-hidden="true"
             />
           </div>
@@ -198,6 +199,10 @@ export default function HomePage() {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
                     decoding="async"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src =
+                        'https://superiorcomfort.com/wp-content/uploads/2023/04/close-up-heat-pump-outside-home.jpg';
+                    }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   <h3 className="absolute bottom-4 left-4 text-white font-bold text-lg">
@@ -209,7 +214,7 @@ export default function HomePage() {
                   <Link
                     to={svc.path}
                     className="inline-flex items-center text-sm font-bold transition-colors"
-                    style={{ color: '#CE1126' }}
+                    style={{ color: colors.primaryHex }}
                   >
                     Learn More →
                   </Link>
@@ -220,11 +225,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── Animated Google Reviews — Bottom of page, before CTA ─── */}
+      {/* ─── Google Reviews ─── */}
       <GoogleReviews />
 
       {/* ─── Emergency CTA Bar ─── */}
-      <div className="py-12" style={{ backgroundColor: '#003DA5' }}>
+      <div className="py-12" style={{ backgroundColor: colors.dark }}>
         <div className="max-w-7xl mx-auto px-4 text-center">
           <p className="text-2xl font-extrabold text-white mb-2">24 Hour Emergency Service</p>
           <p className="text-white/80 mb-6">
@@ -232,7 +237,8 @@ export default function HomePage() {
           </p>
           <a
             href={`tel:${phone}`}
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-lg text-lg font-bold text-white border-2 border-white hover:bg-white hover:text-[#003DA5] transition-colors"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-lg text-lg font-bold text-white border-2 border-white hover:bg-white transition-colors"
+            style={{ '--hover-text': colors.dark } as React.CSSProperties}
           >
             <Phone className="w-5 h-5" />
             Emergency Call 24/7 — {phoneFormatted}

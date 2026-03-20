@@ -6,16 +6,16 @@ export default function CoolingPage() {
     <ServicePage
       title="Cooling"
       subtitle="Air Conditioning · Humidity Control · Peak Efficiency"
-      heroImage="https://neas-hvac.com/wp-content/uploads/2019/01/Cooling-Large-1-1280x580.jpg"
-      heroImageAlt="NEAS Cooling — AC service and installation in Danbury CT"
+      heroImage="https://Superior Comfort-hvac.com/wp-content/uploads/2019/01/Cooling-Large-1-1280x580.jpg"
+      heroImageAlt="Superior Comfort Cooling — AC service and installation in Ansonia CT"
       content={
         <div>
           <h2 className="text-3xl font-bold text-slate-900 mb-6">Cooling Services</h2>
           <div className="w-12 h-1 rounded-full mb-8" style={{ backgroundColor: '#CE1126' }} />
 
           <img
-            src="https://neas-hvac.com/wp-content/uploads/2019/01/Cooling.jpg"
-            alt="NEAS Cooling — air conditioning systems"
+            src="https://Superior Comfort-hvac.com/wp-content/uploads/2019/01/Cooling.jpg"
+            alt="Superior Comfort Cooling — air conditioning systems"
             className="w-full rounded-2xl mb-8 object-cover"
             style={{ maxHeight: '360px' }}
             loading="lazy"
@@ -23,7 +23,7 @@ export default function CoolingPage() {
           />
 
           <p className="text-slate-600 text-lg leading-relaxed mb-6">
-            NEAS makes sure your air conditioner meets your expectations day in and day out. Precise temperature control, ideal humidity levels, clean air, and peak efficiency — that's what we deliver for Danbury homeowners every summer.
+            Superior Comfort makes sure your air conditioner meets your expectations day in and day out. Precise temperature control, ideal humidity levels, clean air, and peak efficiency — that's what we deliver for Ansonia homeowners every summer.
           </p>
           <p className="text-slate-600 text-lg leading-relaxed mb-8">
             Our experienced technicians service all major brands and models, from central air conditioning systems to ductless mini-splits. Whether you need a quick repair or a full system replacement, we've got you covered.

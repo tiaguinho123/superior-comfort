@@ -6,16 +6,16 @@ export default function HeatingPage() {
     <ServicePage
       title="Heating"
       subtitle="Oil & Gas Furnaces · Heat Pumps · Boilers"
-      heroImage="https://neas-hvac.com/wp-content/uploads/2019/01/HEATING-Large-1-1280x580.jpg"
-      heroImageAlt="NEAS Heating — Furnace and heat pump service in Danbury CT"
+      heroImage="https://Superior Comfort-hvac.com/wp-content/uploads/2019/01/HEATING-Large-1-1280x580.jpg"
+      heroImageAlt="Superior Comfort Heating — Furnace and heat pump service in Ansonia CT"
       content={
         <div>
           <h2 className="text-3xl font-bold text-slate-900 mb-6">Heating Services</h2>
           <div className="w-12 h-1 rounded-full mb-8" style={{ backgroundColor: '#CE1126' }} />
 
           <img
-            src="https://neas-hvac.com/wp-content/uploads/2019/01/HEATING.jpg"
-            alt="NEAS Heating service"
+            src="https://Superior Comfort-hvac.com/wp-content/uploads/2019/01/HEATING.jpg"
+            alt="Superior Comfort Heating service"
             className="w-full rounded-2xl mb-8 object-cover"
             style={{ maxHeight: '360px' }}
             loading="lazy"
@@ -23,7 +23,7 @@ export default function HeatingPage() {
           />
 
           <p className="text-slate-600 text-lg leading-relaxed mb-6">
-            New England Air Systems provides comprehensive heating services for homeowners in Danbury and surrounding areas of Connecticut. Whether your furnace needs repair, your boiler needs maintenance, or you're ready for a full system installation, our licensed technicians are ready to help.
+            Superior Comfort provides comprehensive heating services for homeowners in Ansonia and surrounding areas of Connecticut. Whether your furnace needs repair, your boiler needs maintenance, or you're ready for a full system installation, our licensed technicians are ready to help.
           </p>
 
           <h3 className="text-xl font-bold text-slate-900 mb-4">Our Heating Services Include:</h3>

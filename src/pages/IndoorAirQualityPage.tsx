@@ -6,15 +6,15 @@ export default function IndoorAirQualityPage() {
     <ServicePage
       title="Indoor Air Quality"
       subtitle="Purification · Filtration · Humidity Control"
-      heroImage="https://neas-hvac.com/wp-content/uploads/2019/02/INDOOR-AIR-QUALITY-LARGE.jpg"
-      heroImageAlt="NEAS Indoor Air Quality — air purification systems in Danbury CT"
+      heroImage="https://Superior Comfort-hvac.com/wp-content/uploads/2019/02/INDOOR-AIR-QUALITY-LARGE.jpg"
+      heroImageAlt="Superior Comfort Indoor Air Quality — air purification systems in Ansonia CT"
       content={
         <div>
           <h2 className="text-3xl font-bold text-slate-900 mb-6">Indoor Air Quality</h2>
           <div className="w-12 h-1 rounded-full mb-8" style={{ backgroundColor: '#CE1126' }} />
 
           <img
-            src="https://neas-hvac.com/wp-content/uploads/2019/01/180404-better-stock-woman-blowing-nose-ew-1250p_099d7e00064bb4e46bb983b8ce7e3f24.fit-760w.jpg"
+            src="https://Superior Comfort-hvac.com/wp-content/uploads/2019/01/180404-better-stock-woman-blowing-nose-ew-1250p_099d7e00064bb4e46bb983b8ce7e3f24.fit-760w.jpg"
             alt="Indoor air quality — healthy home air"
             className="w-full rounded-2xl mb-8 object-cover"
             style={{ maxHeight: '360px' }}
@@ -23,7 +23,7 @@ export default function IndoorAirQualityPage() {
           />
 
           <p className="text-slate-600 text-lg leading-relaxed mb-6">
-            The air inside your home can be up to 5 times more polluted than outdoor air. New England Air Systems offers Healthy Climate® solutions to dramatically improve the air your family breathes every day.
+            The air inside your home can be up to 5 times more polluted than outdoor air. Superior Comfort offers Healthy Climate® solutions to dramatically improve the air your family breathes every day.
           </p>
 
           <h3 className="text-xl font-bold text-slate-900 mb-4">Our Indoor Air Quality Solutions:</h3>
