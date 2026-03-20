@@ -34,8 +34,8 @@ export default function Navbar() {
   const navLinkClass = ({ isActive }: { isActive: boolean }) =>
     `text-sm font-semibold transition-colors px-1 pb-1 border-b-2 ${
       isActive
-        ? 'text-[#CE1126] border-[#CE1126]'
-        : 'text-slate-700 border-transparent hover:text-[#CE1126]'
+        ? 'text-[#5d9d5c] border-[#5d9d5c]'
+        : 'text-slate-700 border-transparent hover:text-[#5d9d5c]'
     }`;
 
   return (
@@ -66,8 +66,8 @@ export default function Navbar() {
               <button
                 className={`text-sm font-semibold flex items-center gap-1 pb-1 border-b-2 transition-colors ${
                   location.pathname.includes('/heating') || location.pathname.includes('/cooling') || location.pathname.includes('/indoor') || location.pathname.includes('/comfort')
-                    ? 'text-[#CE1126] border-[#CE1126]'
-                    : 'text-slate-700 border-transparent hover:text-[#CE1126]'
+                    ? 'text-[#5d9d5c] border-[#5d9d5c]'
+                    : 'text-slate-700 border-transparent hover:text-[#5d9d5c]'
                 }`}
                 aria-expanded={servicesOpen}
                 aria-haspopup="true"
@@ -82,7 +82,7 @@ export default function Navbar() {
                       to={s.path}
                       className={({ isActive }) =>
                         `block px-4 py-2.5 text-sm font-medium transition-colors ${
-                          isActive ? 'text-[#CE1126] bg-red-50' : 'text-slate-700 hover:text-[#CE1126] hover:bg-slate-50'
+                          isActive ? 'text-[#5d9d5c] bg-red-50' : 'text-slate-700 hover:text-[#5d9d5c] hover:bg-slate-50'
                         }`
                       }
                     >
@@ -102,7 +102,7 @@ export default function Navbar() {
           <a
             href={`tel:${cfg.phone}`}
             className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-bold text-white transition-colors shadow"
-            style={{ backgroundColor: '#CE1126' }}
+            style={{ backgroundColor: '#5d9d5c' }}
           >
             <Phone className="w-4 h-4" aria-hidden="true" />
             {cfg.phoneFormatted}
@@ -137,7 +137,7 @@ export default function Navbar() {
             <a
               href={`tel:${cfg.phone}`}
               className="mt-3 flex items-center justify-center gap-2 px-5 py-3 rounded-lg text-sm font-bold text-white"
-              style={{ backgroundColor: '#CE1126' }}
+              style={{ backgroundColor: '#5d9d5c' }}
             >
               <Phone className="w-4 h-4" aria-hidden="true" />
               {cfg.phoneFormatted}
