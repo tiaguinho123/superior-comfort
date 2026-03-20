@@ -59,8 +59,8 @@ export const config: SiteConfig = {
     subText:
       '24-Hour Emergency Service · Installation · Repair · Maintenance. Serving residential and commercial clients throughout Connecticut.',
     heroBgUrl:
-      'https://superiorcomfort.com/wp-content/uploads/2023/03/13107746_5134336-scaled.jpg',
-    primaryCTA: 'Get A Quote',
+      'https://superiorcomfort.com/wp-content/uploads/2023/04/close-up-heat-pump-outside-home.jpg',
+    primaryCTA: 'Get A Free Quote',
     emergencyText: '24-Hour Emergency Service Available',
   },
 
@@ -92,45 +92,45 @@ export const config: SiteConfig = {
   services: [
     {
       title: 'Residential HVAC',
-      path: '/residential',
-      image: 'https://superiorcomfort.com/wp-content/uploads/2023/04/service-man-adjusting-house-heating-system-683x1024.jpg',
       description:
         'Complete heating and cooling services for homeowners in New Haven and Fairfield County — installation, repair, and annual tune-ups.',
+      cta: 'Residential Service',
+      icon: 'Home',
     },
     {
       title: 'Commercial HVAC',
-      path: '/commercial',
-      image: 'https://superiorcomfort.com/wp-content/uploads/2023/04/men-working-with-equipment-full-shot.jpg',
       description:
-        'Custom commercial HVAC planning and installation for spaces ranging from 1,200 to 12,000 sq ft. Preventive maintenance agreements available.',
+        'Custom commercial HVAC planning and installation for spaces from 1,200 to 12,000 sq ft. Preventive maintenance agreements available.',
+      cta: 'Commercial Service',
+      icon: 'Building2',
     },
     {
       title: 'AC Installation & Repair',
-      path: '/cooling',
-      image: 'https://superiorcomfort.com/wp-content/uploads/2023/04/close-up-ventilation-system-683x1024.jpg',
       description:
         'Expert air conditioning installation, repair, and seasonal tune-ups to keep your home cool and comfortable all summer.',
+      cta: 'Cooling Service',
+      icon: 'Snowflake',
     },
     {
       title: 'Heating & Furnace',
-      path: '/heating',
-      image: 'https://superiorcomfort.com/wp-content/uploads/2023/04/repairman-doing-air-conditioner-service-e1680322323522.jpg',
       description:
         'Boiler repair, furnace installation, and radiant heat system services — trusted by Connecticut homeowners since 1996.',
+      cta: 'Heating Service',
+      icon: 'Flame',
     },
     {
       title: 'Indoor Air Quality',
-      path: '/indoor-air-quality',
-      image: 'https://superiorcomfort.com/wp-content/uploads/2023/03/about-floating-img1.jpg',
       description:
         'Air filtration, dehumidification, and whole-home IAQ solutions. Breathe cleaner, healthier air every day.',
+      cta: 'Air Quality',
+      icon: 'Wind',
     },
     {
       title: 'System Maintenance',
-      path: '/service-agreements',
-      image: 'https://superiorcomfort.com/wp-content/uploads/2023/04/residential-units-narrow.jpg',
       description:
         'Annual tune-up plans covering all heating and cooling systems. 18-point checklist to prevent breakdowns before they happen.',
+      cta: 'Maintenance Plan',
+      icon: 'Wrench',
     },
   ],
 
