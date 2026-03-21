@@ -165,38 +165,39 @@ export default function HomePage() {
               <h2 className="text-3xl font-extrabold text-slate-900 mb-8">Why you should choose our services</h2>
               <div className="space-y-3">
                 {WHY_US_ITEMS.map((item, i) => (
-                  <button
-                    key={item.title}
-                    className="w-full text-left rounded-xl border-2 px-5 py-4 transition-all"
-                    style={{
-                      borderColor: activeItem === i ? colors.primaryHex : "#e2e8f0",
-                      backgroundColor: activeItem === i ? colors.primaryHex + "08" : "#f8fafc",
-                    }}
-                    onClick={() => setActiveItem(i)}
-                  >
-                    <div className="flex items-center justify-between gap-4">
-                      <span className="font-semibold text-slate-900 flex-1 text-left">{item.title}</span>
-                      <span className="flex-shrink-0">
-                        {activeItem === i
-                          ? <Minus className="w-5 h-5" style={{ color: colors.primaryHex }} />
-                          : <Plus className="w-5 h-5 text-slate-400" />
-                        }
-                      </span>
-                    </div>
-                    <AnimatePresence>
-                      {activeItem === i && (
-                        <motion.p
-                          initial={{ opacity: 0, height: 0, marginTop: 0 }}
-                          animate={{ opacity: 1, height: "auto", marginTop: 12 }}
-                          exit={{ opacity: 0, height: 0, marginTop: 0 }}
-                          transition={{ duration: 0.25 }}
-                          className="text-slate-600 text-sm leading-relaxed overflow-hidden"
-                        >
-                          {item.body}
-                        </motion.p>
-                      )}
-                    </AnimatePresence>
-                  </button>
+                  <div key={item.title}>
+                    <button
+                      className="w-full text-left rounded-xl border-2 px-5 py-4 transition-all"
+                      style={{
+                        borderColor: activeItem === i ? colors.primaryHex : "#e2e8f0",
+                        backgroundColor: activeItem === i ? colors.primaryHex + "08" : "#f8fafc",
+                      }}
+                      onClick={() => setActiveItem(i)}
+                    >
+                      <div style={{ display: "grid", gridTemplateColumns: "1fr auto", alignItems: "center", gap: "16px" }}>
+                        <span className="font-semibold text-slate-900 text-left">{item.title}</span>
+                        <span className="flex-shrink-0">
+                          {activeItem === i
+                            ? <Minus className="w-5 h-5" style={{ color: colors.primaryHex }} />
+                            : <Plus className="w-5 h-5 text-slate-400" />
+                          }
+                        </span>
+                      </div>
+                      <AnimatePresence>
+                        {activeItem === i && (
+                          <motion.p
+                            initial={{ opacity: 0, height: 0, marginTop: 0 }}
+                            animate={{ opacity: 1, height: "auto", marginTop: 12 }}
+                            exit={{ opacity: 0, height: 0, marginTop: 0 }}
+                            transition={{ duration: 0.25 }}
+                            className="text-slate-600 text-sm leading-relaxed overflow-hidden text-left"
+                          >
+                            {item.body}
+                          </motion.p>
+                        )}
+                      </AnimatePresence>
+                    </button>
+                  </div>
                 ))}
               </div>
             </div>
