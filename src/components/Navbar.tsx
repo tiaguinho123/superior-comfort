@@ -1,6 +1,6 @@
 ﻿import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Phone, Menu, X, ChevronDown } from "lucide-react";
+import { Phone, Menu, X, ChevronDown, AlertTriangle } from "lucide-react";
 import { useSiteConfig } from "../config/SiteConfigContext";
 
 const NAV_LINKS = [
@@ -42,6 +42,17 @@ export default function Navbar() {
           </div>
           <a href="https://www.facebook.com/people/Superior-Comfort-Heating-AC-LLC/100057861601123/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
             Follow us on Facebook
+          </a>
+        </div>
+      </div>
+
+      {/* Emergency Strip */}
+      <div className="bg-amber-500 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex items-center justify-center gap-3 text-sm font-bold">
+          <AlertTriangle className="w-4 h-4 flex-shrink-0" aria-hidden="true" />
+          <span>24/7 Emergency HVAC Service — Call Now:</span>
+          <a href={`tel:${phone}`} className="underline underline-offset-2 hover:opacity-80 whitespace-nowrap">
+            {phoneFormatted}
           </a>
         </div>
       </div>

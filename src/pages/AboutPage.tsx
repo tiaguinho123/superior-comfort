@@ -1,7 +1,10 @@
 ﻿import { motion } from "motion/react";
-import { Phone, CheckCircle } from "lucide-react";
+import { Phone, CheckCircle, Award } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useSiteConfig } from "../config/SiteConfigContext";
+
+// Real SC truck photo — from superiorcomfort.com media (background on about page)
+const TRUCK_IMAGE = "https://superiorcomfort.com/wp-content/uploads/2023/04/img-3.jpg";
 
 const REVIEWS = [
   { name: "Arnie", role: "Home Owner", text: "Thanks for your quick response to our water tank crisis. It's always a worry when something goes wrong at the lake and we are not there. We really appreciate your help.", date: "7 Days Ago" },
@@ -14,34 +17,44 @@ export default function AboutPage() {
   const { phone, phoneFormatted, colors } = useSiteConfig();
   return (
     <div className="pt-20">
-      {/* Banner */}
-      <div className="relative h-56 md:h-72 overflow-hidden">
+      {/* Hero Banner — real SC truck photo */}
+      <div className="relative h-64 md:h-80 overflow-hidden">
         <img
-          src="https://superiorcomfort.com/wp-content/uploads/2023/04/repairman-doing-air-conditioner-service-e1680322323522.jpg"
-          alt="Superior Comfort HVAC technician"
+          src={TRUCK_IMAGE}
+          alt="Superior Comfort Heating and Air Conditioning service truck"
           className="w-full h-full object-cover object-center"
           fetchPriority="high"
           decoding="async"
+          onError={(e) => {
+            (e.target as HTMLImageElement).src = "https://superiorcomfort.com/wp-content/uploads/2023/04/repairman-doing-air-conditioner-service-e1680322323522.jpg";
+          }}
         />
-        <div className="absolute inset-0 bg-black/55" />
+        <div className="absolute inset-0 bg-black/50" />
         <div className="absolute inset-0 flex items-end">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 w-full">
-            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-3xl md:text-4xl font-extrabold text-white">
-              About Us
-            </motion.h1>
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+              <h1 className="text-3xl md:text-4xl font-extrabold text-white mb-2">About Us</h1>
+              <p className="text-white/80 text-lg">Superior Comfort Heating &amp; Air Conditioning LLC</p>
+            </motion.div>
           </div>
         </div>
       </div>
 
       {/* Stats badge */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 relative z-10 mb-10">
-        <div className="inline-flex items-center gap-3 px-6 py-3 bg-white rounded-xl shadow-lg border border-slate-100">
-          <span className="text-3xl font-extrabold" style={{ color: colors.primaryHex }}>20+</span>
-          <span className="text-slate-600 font-medium">Years of Experience</span>
+        <div className="flex flex-wrap gap-4">
+          <div className="inline-flex items-center gap-3 px-6 py-3 bg-white rounded-xl shadow-lg border border-slate-100">
+            <span className="text-3xl font-extrabold" style={{ color: colors.primaryHex }}>20+</span>
+            <span className="text-slate-600 font-medium text-sm">Years of Experience</span>
+          </div>
+          <div className="inline-flex items-center gap-3 px-6 py-3 bg-white rounded-xl shadow-lg border border-slate-100">
+            <Award className="w-6 h-6" style={{ color: colors.primaryHex }} />
+            <span className="text-slate-600 font-medium text-sm">Rheem Top Contractor</span>
+          </div>
         </div>
       </div>
 
-      {/* Main About content */}
+      {/* Main About */}
       <section className="py-10 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-start">
@@ -55,37 +68,34 @@ export default function AboutPage() {
                 Our reputation is built on our commitment to excellence and design. Our priority is customer service and satisfaction.
               </p>
               <p className="text-slate-600 mb-4 leading-relaxed">
-                Superior Comfort Heating &amp; Air Conditioning LLC was founded in 1996 by Sal Colapietro who has over 22 years of experience in designing, installing and servicing all aspects of heating and air conditioning systems.
+                Superior Comfort Heating &amp; Air Conditioning LLC was founded in <strong>1996 by Sal Colapietro</strong> who has over 22 years of experience in designing, installing and servicing all aspects of heating and air conditioning systems.
               </p>
-              <p className="text-slate-600 mb-6 leading-relaxed font-medium">
-                We have been honored as a "Top Contractor" by Rheem. We welcome the opportunity to become your "Top Contractor" for any and all of your HVAC needs.
+              <p className="text-slate-600 mb-6 leading-relaxed">
+                We have been honored as a <strong>"Top Contractor"</strong> by Rheem. We welcome the opportunity to become your "Top Contractor" for any and all of your HVAC needs.
               </p>
-
               <div className="flex flex-col sm:flex-row gap-3">
-                <a href={`tel:${phone}`} className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg text-white font-bold transition-all hover:brightness-110 whitespace-nowrap" style={{ backgroundColor: colors.primaryHex }}>
+                <a href={`tel:${phone}`} className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-white font-bold transition-all hover:brightness-110 whitespace-nowrap" style={{ backgroundColor: colors.primaryHex }}>
                   <Phone className="w-4 h-4" />
                   {phoneFormatted}
                 </a>
-                <Link to="/contact-us" className="inline-flex items-center justify-center px-6 py-3 rounded-lg font-bold border-2 text-slate-900 border-slate-300 hover:border-green-500 transition-colors">
-                  Get A Free Estimate
+                <Link to="/contact-us" className="inline-flex items-center justify-center px-6 py-3 rounded-xl font-bold border-2 border-slate-200 text-slate-900 hover:border-green-500 transition-colors">
+                  Free Estimate
                 </Link>
               </div>
             </div>
-
             <div>
               <img
                 src="https://superiorcomfort.com/wp-content/uploads/2023/04/repairman-doing-air-conditioner-service-e1680322323522.jpg"
                 alt="Superior Comfort HVAC technician servicing an air conditioner"
                 className="w-full h-80 object-cover rounded-2xl shadow-md"
-                loading="lazy"
-                decoding="async"
+                loading="lazy" decoding="async"
               />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Why hire an HVAC Contractor */}
+      {/* Why hire section */}
       <section className="py-14 bg-slate-50">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-extrabold text-slate-900 mb-8 text-center">Why Hire an HVAC Contractor?</h2>
@@ -110,20 +120,20 @@ export default function AboutPage() {
         <div className="max-w-3xl mx-auto px-4 text-center">
           <h2 className="text-2xl font-extrabold text-slate-900 mb-3">Send us a few details about your project</h2>
           <p className="text-slate-500 mb-6">We will supply a FREE PROJECT ESTIMATE. No obligations!</p>
-          <a href={`tel:${phone}`} className="inline-flex items-center gap-2 px-8 py-4 rounded-lg text-white font-bold text-lg hover:brightness-110 transition-all" style={{ backgroundColor: colors.primaryHex }}>
+          <a href={`tel:${phone}`} className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-lg hover:brightness-110 transition-all" style={{ backgroundColor: colors.primaryHex }}>
             <Phone className="w-5 h-5" />
             Contact Now — {phoneFormatted}
           </a>
         </div>
       </section>
 
-      {/* Testimonials from real site */}
+      {/* Testimonials */}
       <section className="py-14 bg-slate-50">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-extrabold text-slate-900 mb-10 text-center">Here's a small sampling of feedback from our satisfied customers:</h2>
           <div className="grid sm:grid-cols-2 gap-6">
             {REVIEWS.map((r) => (
-              <div key={r.name} className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
+              <div key={r.name} className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
                 <div className="flex text-amber-400 mb-3 text-lg">{"★★★★★"}</div>
                 <p className="text-slate-700 mb-4 italic leading-relaxed">"{r.text}"</p>
                 <div className="flex items-center justify-between">
