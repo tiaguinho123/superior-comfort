@@ -6,7 +6,8 @@ import { useSiteConfig } from "../config/SiteConfigContext";
 import TrustBadges from "../components/TrustBadges";
 import GoogleReviews from "../components/GoogleReviews";
 
-const HERO_IMAGE = "/sc_hero.png";
+// Original SC hero images — downloaded from superiorcomfort.com, hosted locally
+const HERO_IMAGE = "/13107746_5134336-scaled.jpg";
 
 const HOME_SERVICES = [
   {
