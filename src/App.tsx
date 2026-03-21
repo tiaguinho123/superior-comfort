@@ -3,17 +3,15 @@ import { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
-// Pages
+// Pages — matching real superiorcomfort.com navigation exactly
 import HomePage from './pages/HomePage';
-import HeatingPage from './pages/HeatingPage';
-import CoolingPage from './pages/CoolingPage';
-import IndoorAirQualityPage from './pages/IndoorAirQualityPage';
-import ComfortControlsPage from './pages/ComfortControlsPage';
-import FinancingPage from './pages/FinancingPage';
 import AboutPage from './pages/AboutPage';
+import ResidentialPage from './pages/ResidentialPage';
+import CommercialPage from './pages/CommercialPage';
+import ProductsPage from './pages/ProductsPage';
+import OtherServicesPage from './pages/OtherServicesPage';
 import ContactPage from './pages/ContactPage';
 
-// Scroll to top on route change
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
@@ -24,28 +22,31 @@ export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      {/* Skip to content for accessibility */}
-      <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:px-4 focus:py-2 focus:bg-white focus:text-red-700 focus:rounded-lg focus:shadow-lg focus:font-bold">
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:px-4 focus:py-2 focus:bg-white focus:rounded-lg focus:shadow-lg focus:font-bold"
+      >
         Skip to main content
       </a>
-
       <Navbar />
-
       <main id="main-content">
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/heating" element={<HeatingPage />} />
-          <Route path="/cooling" element={<CoolingPage />} />
-          <Route path="/indoor-air-quality" element={<IndoorAirQualityPage />} />
-          <Route path="/comfort-controls" element={<ComfortControlsPage />} />
-          <Route path="/financing" element={<FinancingPage />} />
           <Route path="/about-us" element={<AboutPage />} />
+          <Route path="/residential" element={<ResidentialPage />} />
+          <Route path="/commercial" element={<CommercialPage />} />
+          <Route path="/products" element={<ProductsPage />} />
+          <Route path="/services" element={<OtherServicesPage />} />
           <Route path="/contact-us" element={<ContactPage />} />
-          {/* Fallback */}
+          {/* Legacy route aliases */}
+          <Route path="/heating" element={<ResidentialPage />} />
+          <Route path="/cooling" element={<ResidentialPage />} />
+          <Route path="/indoor-air-quality" element={<OtherServicesPage />} />
+          <Route path="/comfort-controls" element={<OtherServicesPage />} />
+          <Route path="/financing" element={<ContactPage />} />
           <Route path="*" element={<HomePage />} />
         </Routes>
       </main>
-
       <Footer />
     </BrowserRouter>
   );
