@@ -169,12 +169,12 @@ export default function HomePage() {
                     <Phone className="w-5 h-5" aria-hidden="true" />
                     Free Estimate — {phoneFormatted}
                   </a>
-                  <Link
-                    to="/contact-us"
-                    className="inline-flex items-center justify-center px-6 py-4 bg-white/10 border-2 border-white/40 text-white font-bold rounded-xl text-base hover:bg-white/20 active:scale-95 transition-all whitespace-nowrap"
+                  <a
+                    href={`tel:${phone}`}
+                    className="inline-flex items-center justify-center gap-2 px-6 py-4 bg-red-600 hover:bg-red-700 active:scale-95 transition-all text-white font-bold rounded-xl text-base whitespace-nowrap shadow-lg"
                   >
-                    Get A Free Quote
-                  </Link>
+                    🚨 24/7 Emergency Call
+                  </a>
                 </div>
               </motion.div>
             </div>
