@@ -1,10 +1,10 @@
-﻿import { motion } from "motion/react";
+import { motion } from "motion/react";
 import { Phone, CheckCircle, Award } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useSiteConfig } from "../config/SiteConfigContext";
 
-// Real SC truck photo — from superiorcomfort.com media (background on about page)
-const TRUCK_IMAGE = "https://superiorcomfort.com/wp-content/uploads/2023/04/img-3.jpg";
+// Real SC truck photo — hosted locally, no CDN hotlink blocking
+const TRUCK_IMAGE = "/sc_truck.png";
 
 const REVIEWS = [
   { name: "Arnie", role: "Home Owner", text: "Thanks for your quick response to our water tank crisis. It's always a worry when something goes wrong at the lake and we are not there. We really appreciate your help.", date: "7 Days Ago" },

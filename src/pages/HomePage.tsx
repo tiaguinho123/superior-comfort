@@ -1,4 +1,4 @@
-﻿import { useState } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Phone, Star, Check, Plus, Minus } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -6,7 +6,7 @@ import { useSiteConfig } from "../config/SiteConfigContext";
 import TrustBadges from "../components/TrustBadges";
 import GoogleReviews from "../components/GoogleReviews";
 
-const HERO_IMAGE = "https://superiorcomfort.com/wp-content/uploads/2023/03/13107746_5134336-scaled.jpg";
+const HERO_IMAGE = "/sc_hero.png";
 
 const HOME_SERVICES = [
   {
@@ -74,7 +74,6 @@ export default function HomePage() {
             className="absolute inset-0 w-full h-full object-cover object-center"
             fetchPriority="high"
             decoding="async"
-            onError={(e) => { (e.target as HTMLImageElement).src = "https://superiorcomfort.com/wp-content/uploads/2023/04/close-up-heat-pump-outside-home.jpg"; }}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-transparent" />
           <div className="relative z-10 flex flex-col justify-center" style={{ minHeight: "580px" }}>
@@ -175,12 +174,14 @@ export default function HomePage() {
                     }}
                     onClick={() => setActiveItem(i)}
                   >
-                    <div className="flex items-center justify-between">
-                      <span className="font-semibold text-slate-900">{item.title}</span>
-                      {activeItem === i
-                        ? <Minus className="w-5 h-5 flex-shrink-0" style={{ color: colors.primaryHex }} />
-                        : <Plus className="w-5 h-5 flex-shrink-0 text-slate-400" />
-                      }
+                    <div className="flex items-center justify-between gap-4">
+                      <span className="font-semibold text-slate-900 flex-1 text-left">{item.title}</span>
+                      <span className="flex-shrink-0">
+                        {activeItem === i
+                          ? <Minus className="w-5 h-5" style={{ color: colors.primaryHex }} />
+                          : <Plus className="w-5 h-5 text-slate-400" />
+                        }
+                      </span>
                     </div>
                     <AnimatePresence>
                       {activeItem === i && (
