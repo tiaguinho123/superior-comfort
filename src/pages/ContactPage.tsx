@@ -7,111 +7,154 @@ export default function ContactPage() {
   const { phone, phoneFormatted, email, address, colors } = useSiteConfig();
   const [form, setForm] = useState({ name: "", phone: "", email: "", service: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [errors, setErrors] = useState<Record<string, boolean>>({});
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const newErrors: Record<string, boolean> = {};
+    if (!form.name.trim()) newErrors.name = true;
+    if (!form.phone.trim()) newErrors.phone = true;
+    if (Object.keys(newErrors).length > 0) { setErrors(newErrors); return; }
     setSubmitted(true);
   };
 
   return (
     <div className="pt-20">
-      <div className="relative h-48 overflow-hidden bg-slate-900 flex items-end">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 w-full">
-          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-3xl md:text-4xl font-extrabold text-white">
+      {/* Banner */}
+      <div className="relative h-44 overflow-hidden bg-slate-900 flex items-end">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-7 w-full">
+          <motion.h1
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55 }}
+            className="text-3xl sm:text-4xl font-extrabold text-white"
+          >
             Contact Us
           </motion.h1>
         </div>
       </div>
 
-      <section className="py-14 bg-white">
+      <section className="py-12 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
-          {/* Contact info cards - properly sized */}
-          <div className="grid md:grid-cols-4 gap-5 mb-14">
-            <a href="https://goo.gl/maps/CHZ21spKpt6kHuT67" target="_blank" rel="noopener noreferrer"
-              className="bg-slate-50 rounded-2xl p-6 text-center border border-slate-100 hover:shadow-md hover:-translate-y-0.5 transition-all group col-span-1">
-              <div className="w-12 h-12 rounded-full mx-auto mb-4 flex items-center justify-center" style={{ backgroundColor: colors.primaryHex + "15" }}>
-                <MapPin className="w-6 h-6" style={{ color: colors.primaryHex }} />
+          {/* ── Contact Info Cards ─────────────────────────────── */}
+          {/* Mobile: 2-col grid / Desktop: 4-col grid */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+
+            {/* Office Location */}
+            <a
+              href="https://goo.gl/maps/CHZ21spKpt6kHuT67"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex flex-col items-center text-center gap-3 p-5 bg-slate-50 rounded-2xl border border-slate-100 hover:shadow-md hover:-translate-y-0.5 transition-all"
+            >
+              <div className="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: colors.primaryHex + "18" }}>
+                <MapPin className="w-5 h-5" style={{ color: colors.primaryHex }} aria-hidden="true" />
               </div>
-              <h3 className="font-bold text-slate-900 mb-2 text-sm">Office Location</h3>
-              <p className="text-slate-600 text-sm leading-relaxed">
-                {address.street}<br />
-                {address.city}, {address.state} {address.zip}
-              </p>
+              <div>
+                <p className="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1">Location</p>
+                <p className="text-slate-800 font-semibold text-sm leading-snug">
+                  {address.street}<br />{address.city}, {address.state} {address.zip}
+                </p>
+              </div>
             </a>
 
-            <a href={`tel:${phone}`}
-              className="bg-slate-50 rounded-2xl p-6 text-center border border-slate-100 hover:shadow-md hover:-translate-y-0.5 transition-all group col-span-1">
-              <div className="w-12 h-12 rounded-full mx-auto mb-4 flex items-center justify-center" style={{ backgroundColor: colors.primaryHex + "15" }}>
-                <Phone className="w-6 h-6" style={{ color: colors.primaryHex }} />
+            {/* Phone */}
+            <a
+              href={`tel:${phone}`}
+              className="flex flex-col items-center text-center gap-3 p-5 bg-slate-50 rounded-2xl border border-slate-100 hover:shadow-md hover:-translate-y-0.5 transition-all"
+            >
+              <div className="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: colors.primaryHex + "18" }}>
+                <Phone className="w-5 h-5" style={{ color: colors.primaryHex }} aria-hidden="true" />
               </div>
-              <h3 className="font-bold text-slate-900 mb-2 text-sm">Call Us</h3>
-              <p className="font-bold" style={{ color: colors.primaryHex }}>{phoneFormatted}</p>
-              <p className="text-slate-500 text-xs mt-1">Emergency: Always Available</p>
+              <div>
+                <p className="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1">Phone</p>
+                <p className="font-bold text-sm" style={{ color: colors.primaryHex }}>{phoneFormatted}</p>
+                <p className="text-slate-500 text-xs mt-0.5">Emergency: 24/7</p>
+              </div>
             </a>
 
-            <a href={`mailto:${email}`}
-              className="bg-slate-50 rounded-2xl p-6 text-center border border-slate-100 hover:shadow-md hover:-translate-y-0.5 transition-all group col-span-1">
-              <div className="w-12 h-12 rounded-full mx-auto mb-4 flex items-center justify-center" style={{ backgroundColor: colors.primaryHex + "15" }}>
-                <Mail className="w-6 h-6" style={{ color: colors.primaryHex }} />
+            {/* Email */}
+            <a
+              href={`mailto:${email}`}
+              className="flex flex-col items-center text-center gap-3 p-5 bg-slate-50 rounded-2xl border border-slate-100 hover:shadow-md hover:-translate-y-0.5 transition-all"
+            >
+              <div className="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: colors.primaryHex + "18" }}>
+                <Mail className="w-5 h-5" style={{ color: colors.primaryHex }} aria-hidden="true" />
               </div>
-              <h3 className="font-bold text-slate-900 mb-2 text-sm">Email Us</h3>
-              <p className="text-slate-600 text-sm break-all">{email}</p>
+              <div>
+                <p className="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1">Email</p>
+                <p className="text-slate-700 text-xs sm:text-sm break-all leading-snug">{email}</p>
+              </div>
             </a>
 
-            <div className="bg-slate-50 rounded-2xl p-6 text-center border border-slate-100 col-span-1">
-              <div className="w-12 h-12 rounded-full mx-auto mb-4 flex items-center justify-center" style={{ backgroundColor: colors.primaryHex + "15" }}>
-                <Clock className="w-6 h-6" style={{ color: colors.primaryHex }} />
+            {/* Hours */}
+            <div className="flex flex-col items-center text-center gap-3 p-5 bg-slate-50 rounded-2xl border border-slate-100">
+              <div className="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: colors.primaryHex + "18" }}>
+                <Clock className="w-5 h-5" style={{ color: colors.primaryHex }} aria-hidden="true" />
               </div>
-              <h3 className="font-bold text-slate-900 mb-2 text-sm">Hours</h3>
-              <p className="text-slate-600 text-sm">Mon-Fri: 8am - 5pm</p>
-              <p className="text-slate-600 text-sm">Sat: By Appointment</p>
-              <p className="font-semibold text-sm mt-1" style={{ color: colors.primaryHex }}>Emergency: 24/7</p>
+              <div>
+                <p className="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1">Hours</p>
+                <p className="text-slate-700 text-xs sm:text-sm">Mon–Fri: 8am – 5pm</p>
+                <p className="text-slate-700 text-xs sm:text-sm">Sat: By Appointment</p>
+                <p className="text-xs font-bold mt-1" style={{ color: colors.primaryHex }}>Emergency: 24/7</p>
+              </div>
             </div>
           </div>
 
-          {/* Form + Map */}
-          <div className="grid md:grid-cols-2 gap-10">
+          {/* ── Form + Map ─────────────────────────────────────── */}
+          <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+
             {/* Contact Form */}
-            <div className="bg-slate-50 rounded-2xl p-8 border border-slate-100">
-              <h2 className="text-2xl font-extrabold text-slate-900 mb-2">Get A Free Estimate</h2>
-              <p className="text-slate-500 text-sm mb-6">Send us a few details and we will get back to you with no obligations.</p>
+            <div className="bg-slate-50 rounded-2xl p-6 sm:p-8 border border-slate-100">
+              <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 mb-1">Get Your Free Estimate</h2>
+              <p className="text-slate-500 text-sm mb-6">We reply within 24 hours. No obligation, no pressure.</p>
 
               {submitted ? (
                 <div className="flex flex-col items-center justify-center py-12 text-center">
-                  <CheckCircle className="w-16 h-16 mb-4" style={{ color: colors.primaryHex }} />
+                  <CheckCircle className="w-14 h-14 mb-4" style={{ color: colors.primaryHex }} aria-hidden="true" />
                   <h3 className="text-xl font-bold text-slate-900 mb-2">Message Sent!</h3>
-                  <p className="text-slate-500">Thank you! We will get back to you shortly.</p>
+                  <p className="text-slate-500 text-sm">Thank you — we'll be in touch shortly.</p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form onSubmit={handleSubmit} noValidate className="space-y-4">
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-semibold text-slate-700 mb-1">Your Name *</label>
+                      <label htmlFor="name" className="block text-sm font-semibold text-slate-700 mb-1">
+                        Your Name <span aria-hidden="true" className="text-red-500">*</span>
+                      </label>
                       <input
-                        id="name" name="name" type="text" required
+                        id="name" name="name" type="text" required autoComplete="name"
                         value={form.name} onChange={handleChange}
                         placeholder="John Smith"
-                        className="w-full px-4 py-3 rounded-xl border-2 border-slate-200 focus:border-green-500 focus:outline-none text-sm transition-colors"
+                        aria-required="true"
+                        aria-invalid={errors.name}
+                        className={`w-full px-4 py-3 rounded-xl border-2 focus:outline-none text-sm transition-colors ${errors.name ? "border-red-400" : "border-slate-200 focus:border-green-500"}`}
                       />
+                      {errors.name && <p className="text-red-500 text-xs mt-1">Required</p>}
                     </div>
                     <div>
-                      <label htmlFor="phone" className="block text-sm font-semibold text-slate-700 mb-1">Phone Number *</label>
+                      <label htmlFor="phone" className="block text-sm font-semibold text-slate-700 mb-1">
+                        Phone <span aria-hidden="true" className="text-red-500">*</span>
+                      </label>
                       <input
-                        id="phone" name="phone" type="tel" required
+                        id="phone" name="phone" type="tel" required autoComplete="tel"
                         value={form.phone} onChange={handleChange}
                         placeholder="(203) 555-0100"
-                        className="w-full px-4 py-3 rounded-xl border-2 border-slate-200 focus:border-green-500 focus:outline-none text-sm transition-colors"
+                        aria-required="true"
+                        aria-invalid={errors.phone}
+                        className={`w-full px-4 py-3 rounded-xl border-2 focus:outline-none text-sm transition-colors ${errors.phone ? "border-red-400" : "border-slate-200 focus:border-green-500"}`}
                       />
+                      {errors.phone && <p className="text-red-500 text-xs mt-1">Required</p>}
                     </div>
                   </div>
                   <div>
                     <label htmlFor="email" className="block text-sm font-semibold text-slate-700 mb-1">Email Address</label>
                     <input
-                      id="email" name="email" type="email"
+                      id="email" name="email" type="email" autoComplete="email"
                       value={form.email} onChange={handleChange}
                       placeholder="you@example.com"
                       className="w-full px-4 py-3 rounded-xl border-2 border-slate-200 focus:border-green-500 focus:outline-none text-sm transition-colors"
@@ -127,36 +170,38 @@ export default function ContactPage() {
                       <option value="">Select a service...</option>
                       <option>Heating Repair / Replacement</option>
                       <option>AC Repair / Replacement</option>
-                      <option>Annual Tune-Up</option>
+                      <option>Annual Tune-Up / Maintenance</option>
                       <option>Commercial HVAC</option>
-                      <option>New Installation</option>
-                      <option>Other / Emergency</option>
+                      <option>New System Installation</option>
+                      <option>Emergency Service</option>
+                      <option>Other</option>
                     </select>
                   </div>
                   <div>
                     <label htmlFor="message" className="block text-sm font-semibold text-slate-700 mb-1">Message</label>
                     <textarea
-                      id="message" name="message" rows={4}
+                      id="message" name="message" rows={4} autoComplete="off"
                       value={form.message} onChange={handleChange}
-                      placeholder="Tell us about your project or issue..."
+                      placeholder="Tell us about your system or issue..."
                       className="w-full px-4 py-3 rounded-xl border-2 border-slate-200 focus:border-green-500 focus:outline-none text-sm transition-colors resize-none"
                     />
                   </div>
                   <button
                     type="submit"
-                    className="w-full flex items-center justify-center gap-2 py-4 rounded-xl text-white font-bold text-base hover:brightness-110 transition-all"
+                    className="w-full flex items-center justify-center gap-2 py-4 rounded-xl text-white font-bold text-base hover:brightness-110 active:scale-95 transition-all"
                     style={{ backgroundColor: colors.primaryHex }}
                   >
-                    <Send className="w-5 h-5" />
+                    <Send className="w-5 h-5" aria-hidden="true" />
                     Send Message
                   </button>
+                  <p className="text-center text-slate-400 text-xs">Or call us directly: <a href={`tel:${phone}`} className="font-semibold underline" style={{ color: colors.primaryHex }}>{phoneFormatted}</a></p>
                 </form>
               )}
             </div>
 
-            {/* Map */}
+            {/* Map + CTA */}
             <div>
-              <div className="rounded-2xl overflow-hidden shadow-md border border-slate-100 mb-6 h-72 md:h-80">
+              <div className="rounded-2xl overflow-hidden shadow-md border border-slate-100 mb-5" style={{ height: "280px" }}>
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.3583849048127!2d-73.07834492346735!3d41.34283419715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e7d8f75e8b40d1%3A0x3c2c7ab77dbf6b0e!2sSuperior%20Comfort%20Heating%20%26%20Air%20Conditioning%20LLC!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
                   width="100%"
@@ -164,15 +209,20 @@ export default function ContactPage() {
                   style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
-                  title="Superior Comfort Location"
+                  title="Superior Comfort Heating and Air Conditioning location in Ansonia CT"
                 />
               </div>
+
               <div className="rounded-2xl p-6 text-white" style={{ backgroundColor: colors.dark }}>
-                <h3 className="font-bold text-lg mb-1">Need Immediate Help?</h3>
-                <p className="text-white/75 text-sm mb-4">We offer 24/7 emergency HVAC service across southern Connecticut.</p>
-                <a href={`tel:${phone}`} className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold bg-white hover:bg-slate-100 transition-all whitespace-nowrap text-sm" style={{ color: colors.dark }}>
-                  <Phone className="w-4 h-4" />
-                  {phoneFormatted}
+                <h3 className="font-bold text-lg mb-1">Need Help Right Now?</h3>
+                <p className="text-white/75 text-sm mb-4">We are available 24/7 for heating and AC emergencies across southern Connecticut.</p>
+                <a
+                  href={`tel:${phone}`}
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold bg-white hover:bg-slate-100 active:scale-95 transition-all text-sm whitespace-nowrap"
+                  style={{ color: colors.dark }}
+                >
+                  <Phone className="w-4 h-4" aria-hidden="true" />
+                  Call {phoneFormatted}
                 </a>
               </div>
             </div>
