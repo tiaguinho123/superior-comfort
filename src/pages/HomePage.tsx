@@ -1,4 +1,4 @@
-﻿import { useState } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Phone, Star, Check, Plus, Minus, Shield, Clock, Award, ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -113,7 +113,7 @@ export default function HomePage() {
             fetchPriority="high"
             decoding="async"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/20" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/65 to-black/45" />
           <div className="relative z-10 flex flex-col justify-center" style={{ minHeight: "clamp(520px, 70vh, 680px)" }}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-16">
               <motion.div
