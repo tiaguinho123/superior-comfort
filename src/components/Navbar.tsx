@@ -1,6 +1,6 @@
-﻿import { useState } from "react";
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Phone, Menu, X, ChevronDown, AlertTriangle } from "lucide-react";
+import { Phone, Menu, X, ChevronDown } from "lucide-react";
 import { useSiteConfig } from "../config/SiteConfigContext";
 
 const NAV_LINKS = [
@@ -46,16 +46,6 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Emergency Strip */}
-      <div className="bg-amber-500 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex items-center justify-center gap-3 text-sm font-bold">
-          <AlertTriangle className="w-4 h-4 flex-shrink-0" aria-hidden="true" />
-          <span>24/7 Emergency HVAC Service — Call Now:</span>
-          <a href={`tel:${phone}`} className="underline underline-offset-2 hover:opacity-80 whitespace-nowrap">
-            {phoneFormatted}
-          </a>
-        </div>
-      </div>
 
       <header className="sticky top-0 z-50 bg-white shadow-sm border-b border-slate-100" role="banner">
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between" aria-label="Main navigation">
@@ -124,6 +114,16 @@ export default function Navbar() {
             </button>
           </div>
         </nav>
+
+        {/* Emergency Strip — below navbar */}
+        <div className="bg-slate-800 text-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-1 flex items-center justify-center gap-2 text-xs font-semibold tracking-wide">
+            <span className="text-slate-300">🚨 24/7 Emergency Call:</span>
+            <a href={`tel:${phone}`} className="text-white hover:text-green-400 transition-colors whitespace-nowrap font-bold">
+              {phoneFormatted}
+            </a>
+          </div>
+        </div>
 
         {mobileOpen && (
           <div className="md:hidden bg-white border-t border-slate-100 shadow-lg">
